@@ -1,0 +1,12 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@11.8.0
+2 info using node@v24.13.1
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/zhangwenbo/Desktop/自媒体项目/作品/20260619_AI同事上岗/封面预览/.npmrc
+5 silly config load:file:/Users/zhangwenbo/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm run dev --port 4173
+8 verbose argv "run" "dev" "--" "--port" "4173"
+9 verbose logfile logs-max:10 dir:/Users/zhangwenbo/Desktop/自媒体项目/作品/20260619_AI同事上岗/封面预览/.npm-cache/_logs/2026-06-20T10_03_02_578Z-
+10 verbose logfile /Users/zhangwenbo/Desktop/自媒体项目/作品/20260619_AI同事上岗/封面预览/.npm-cache/_logs/2026-06-20T10_03_02_578Z-debug-0.log
+11 silly logfile done cleaning log files
