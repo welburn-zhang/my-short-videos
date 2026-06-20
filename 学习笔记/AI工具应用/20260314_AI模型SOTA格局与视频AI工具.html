@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 模型 SOTA 格局与视频 AI 工具（2026年3月）</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --card: #1a1a2e;
+    --border: #2a2a4a;
+    --text: #e0e0e0;
+    --text-muted: #8888aa;
+    --accent: #6c63ff;
+    --accent2: #00d2ff;
+    --green: #00e676;
+    --orange: #ff9100;
+    --pink: #ff4081;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 40px 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    color: var(--accent2);
+    margin: 40px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 17px;
+    color: var(--orange);
+    margin: 24px 0 12px;
+  }
+  p { margin: 10px 0; }
+  strong { color: #fff; }
+  ul {
+    padding-left: 20px;
+    margin: 10px 0;
+  }
+  li { margin: 6px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  th {
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover td { background: rgba(108, 99, 255, 0.08); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .highlight {
+    background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(0,210,255,0.1));
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+    font-size: 16px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .tag-green { background: rgba(0,230,118,0.15); color: var(--green); }
+  .tag-orange { background: rgba(255,145,0,0.15); color: var(--orange); }
+  .tag-pink { background: rgba(255,64,129,0.15); color: var(--pink); }
+  .tag-blue { background: rgba(0,210,255,0.15); color: var(--accent2); }
+  .benchmark {
+    display: inline-block;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin: 4px;
+    font-size: 13px;
+  }
+  .benchmark span { color: var(--green); font-weight: 700; font-size: 16px; }
+  .footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  @media (max-width: 600px) {
+    body { padding: 20px 12px; }
+    h1 { font-size: 22px; }
+    table { font-size: 13px; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>AI 模型 SOTA 格局与视频 AI 工具</h1>
+<p class="subtitle">2026年3月 · 学习笔记</p>
+
+<!-- 一、第一梯队 -->
+<h2>一、全球 AI 模型第一梯队</h2>
+<table>
+  <tr><th>模型</th><th>公司</th><th>最强领域</th></tr>
+  <tr><td><strong>GPT-5.3 / 5.4</strong></td><td>OpenAI</td><td>推理、代码生成、文生图</td></tr>
+  <tr><td><strong>Claude Opus 4.6</strong></td><td>Anthropic</td><td>推理、编程、长文本（100万token）</td></tr>
+  <tr><td><strong>Gemini 3.1 Pro</strong></td><td>Google</td><td>多模态（视频理解、跨语言）最强</td></tr>
+</table>
+
+<!-- 二、GPT-5.4 -->
+<h2>二、GPT-5.4 最新更新 <span class="tag tag-green">2026.03.06</span></h2>
+<div class="card">
+  <p>GPT-5.4 是 OpenAI 截至目前最强的模型，主要升级：</p>
+  <ul>
+    <li><strong>上下文窗口扩展到100万 token</strong>（追平 Gemini 和 Claude）</li>
+    <li><strong>原生操控电脑</strong>：第一个能直接操作键盘鼠标、跨应用完成任务的通用模型</li>
+    <li><strong>推理效率提升</strong>：用更少的 token 解决问题</li>
+    <li><strong>准确性提升</strong>：虚假信息比 5.2 减少 33%</li>
+    <li><strong>原生工具搜索</strong>：自动找对的工具来用</li>
+  </ul>
+  <div style="margin-top: 16px;">
+    <div class="benchmark">GDPval <span>83.0%</span></div>
+    <div class="benchmark">OSWorld <span>75.0%</span></div>
+    <div class="benchmark">SWE-Bench Pro <span>57.7%</span></div>
+  </div>
+</div>
+
+<!-- 三、按任务SOTA -->
+<h2>三、按具体任务的 SOTA</h2>
+<table>
+  <tr><th>任务领域</th><th>当前 SOTA</th><th>说明</th></tr>
+  <tr><td>推理/数学</td><td>Claude Opus 4.6</td><td>GPQA 得分 91.9%</td></tr>
+  <tr><td>编程/代码</td><td>Claude Opus 4.6 Thinking</td><td>编码排行榜第一</td></tr>
+  <tr><td>多模态/视频理解</td><td>Gemini 3.1 Pro</td><td>Video-MMMU 87.6%</td></tr>
+  <tr><td>文本理解</td><td>Gemini 3.1 Pro</td><td>Elo 评分 1490</td></tr>
+  <tr><td>文生图（综合）</td><td>Nano Banana 2（Google）</td><td>Elo 1280，综合第一</td></tr>
+  <tr><td>文生图（文字准确度）</td><td>GPT Image 1.5</td><td>文字渲染最准（~95%），Elo 1264</td></tr>
+  <tr><td>操控电脑/自主Agent</td><td>GPT-5.4</td><td>原生 Computer Use</td></tr>
+  <tr><td>超长上下文</td><td>Llama 4 Scout</td><td>1000万 token</td></tr>
+  <tr><td>性价比</td><td>DeepSeek V3.2 / V4</td><td>90%+ 质量，1/10 价格</td></tr>
+</table>
+
+<!-- 四、国产模型 -->
+<h2>四、国产模型</h2>
+<table>
+  <tr><th>模型</th><th>公司</th><th>亮点</th></tr>
+  <tr><td><strong>Kimi K2.5</strong></td><td>月之暗面</td><td>超长文本全球最强，代码生成也拿过全球第一</td></tr>
+  <tr><td><strong>Qwen 3.5-Max</strong></td><td>阿里</td><td>中文理解最强，数学推理跟 Google 并列</td></tr>
+  <tr><td><strong>DeepSeek V4</strong></td><td>深度求索</td><td>性价比之王，API 价格是 GPT 的 1/10</td></tr>
+</table>
+
+<!-- 五、图像生成对比 -->
+<h2>五、GPT vs Gemini 图像生成实测对比</h2>
+<table>
+  <tr><th>维度</th><th>GPT Image 1.5</th><th>Nano Banana 2</th></tr>
+  <tr><td>出图速度</td><td>10-20 秒</td><td><strong>1-3 秒</strong></td></tr>
+  <tr><td>文字渲染</td><td><strong>几乎完美，中文偶尔出错</strong></td><td>不错但不够稳定</td></tr>
+  <tr><td>提示词准确度</td><td><strong>93-95%</strong></td><td>89-92%</td></tr>
+  <tr><td>设计感</td><td><strong>更强，商业感突出</strong></td><td>更克制自然</td></tr>
+  <tr><td>图片编辑</td><td>一般</td><td><strong>局部修改精准</strong></td></tr>
+  <tr><td>适合场景</td><td>封面海报（有文字）</td><td>批量出图、快速迭代</td></tr>
+</table>
+<p><strong>实测结论</strong>：GPT 设计能力强但中文偶尔翻车，Gemini 文字准但设计感弱。</p>
+
+<!-- 六、视频 -->
+<h2>六、视频理解 vs 视频生成——两个不同赛道</h2>
+
+<h3>视频理解（分析已有视频）</h3>
+<table>
+  <tr><th>维度</th><th>Gemini 3.1 Pro</th><th>GPT-5.4</th></tr>
+  <tr><td>处理方式</td><td><strong>原生理解视频，不用拆帧</strong></td><td>仍然是抽帧</td></tr>
+  <tr><td>上下文窗口</td><td>100万 token</td><td>100万 token（从40万升级）</td></tr>
+  <tr><td>视频评分</td><td><strong>Video-MMMU 87.6%</strong></td><td>低于 Gemini</td></tr>
+  <tr><td>处理速度</td><td><strong>148 token/秒</strong></td><td>102 token/秒</td></tr>
+</table>
+<p><strong>结论</strong>：视频理解赛道 Gemini 碾压 GPT。Gemini 是"真看视频"，GPT 是"截图看看"。</p>
+
+<h3>视频生成（创造新视频）</h3>
+<div class="card">
+  <p><strong>Seedance 2.0</strong> <span class="tag tag-blue">字节跳动</span> <span class="tag tag-green">2026.02</span></p>
+  <ul>
+    <li>支持文字+图片+音频+视频四种输入（最多9张图、3段视频、3段音频）</li>
+    <li>输出：4-15秒、2K分辨率、多镜头、双声道音频</li>
+    <li>核心亮点：音画同步（口型对得上）、物理动作逼真、可像导演一样精细控制</li>
+    <li>上线平台：即梦AI、豆包</li>
+    <li>行业评价：生成可用率达到 SOTA 水平</li>
+  </ul>
+</div>
+
+<!-- 七、选择指南 -->
+<h2>七、自媒体实用选择指南</h2>
+<table>
+  <tr><th>需求</th><th>推荐工具</th></tr>
+  <tr><td>分析竞品爆款视频</td><td>Gemini 3.1 Pro</td></tr>
+  <tr><td>视频自动字幕/总结</td><td>Gemini 3.1 Pro</td></tr>
+  <tr><td>生成短视频素材片段</td><td>Seedance 2.0 / 即梦AI</td></tr>
+  <tr><td>做封面图（有文字）</td><td>GPT（设计感强）</td></tr>
+  <tr><td>快速批量出图</td><td>Gemini Nano Banana 2</td></tr>
+  <tr><td>日常写脚本聊创作</td><td>Claude / GPT</td></tr>
+  <tr><td>处理长文档</td><td>Kimi K2.5</td></tr>
+  <tr><td>省钱跑量</td><td>DeepSeek</td></tr>
+</table>
+
+<!-- 八、核心认知 -->
+<h2>八、核心认知</h2>
+<div class="highlight">
+  2026年没有"全能冠军"，每个模型在不同任务上轮流当 SOTA。<br>选工具不是选"最强的"，而是选<strong>"最适合当前任务的"</strong>。
+</div>
+
+<div class="footer">
+  学习日期：2026年3月14日
+</div>
+
+</body>
+</html>

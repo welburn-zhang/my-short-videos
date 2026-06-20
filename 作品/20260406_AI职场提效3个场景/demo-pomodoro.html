@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>专注番茄钟</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
+    transition: background 0.8s ease;
+  }
+
+  body.focus-mode { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); }
+  body.break-mode { background: linear-gradient(135deg, #134e5e, #71b280); }
+
+  .container {
+    text-align: center;
+    color: #fff;
+    width: 420px;
+    padding: 40px 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .status-label {
+    font-size: 15px;
+    opacity: 0.7;
+    margin-bottom: 48px;
+    letter-spacing: 2px;
+    transition: all 0.5s;
+  }
+
+  .timer-ring {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto 48px;
+  }
+
+  .timer-ring svg {
+    transform: rotate(-90deg);
+    width: 280px;
+    height: 280px;
+  }
+
+  .timer-ring .bg-ring {
+    fill: none;
+    stroke: rgba(255,255,255,0.08);
+    stroke-width: 6;
+  }
+
+  .timer-ring .progress-ring {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s linear, stroke 0.8s ease;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+  }
+
+  body.focus-mode .progress-ring { stroke: #a78bfa; }
+  body.break-mode .progress-ring { stroke: #6ee7b7; }
+
+  .timer-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .time-text {
+    font-size: 72px;
+    font-weight: 200;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 4px;
+    line-height: 1;
+  }
+
+  .session-count {
+    font-size: 13px;
+    opacity: 0.5;
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+
+  .controls {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .btn {
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+  }
+
+  .btn-primary {
+    padding: 16px 48px;
+    color: #fff;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .btn-primary:hover {
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+
+  .btn-secondary {
+    padding: 16px 28px;
+    color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .btn-secondary:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.12);
+  }
+
+  .mode-tabs {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+
+  .mode-tab {
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+  }
+
+  .mode-tab.active {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    opacity: 0.6;
+    font-size: 13px;
+  }
+
+  .stats span { letter-spacing: 1px; }
+  .stats strong { font-size: 20px; font-weight: 300; display: block; margin-bottom: 4px; }
+
+  .pulse { animation: pulse 2s ease-in-out infinite; }
+
+  @keyframes pulse {
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(255,255,255,0.3)); }
+    50% { filter: drop-shadow(0 0 20px rgba(167,139,250,0.6)); }
+  }
+
+  .completion-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  .completion-overlay.show {
+    display: flex;
+    opacity: 1;
+  }
+
+  .completion-msg {
+    text-align: center;
+    color: #fff;
+    animation: scaleIn 0.5s ease;
+  }
+
+  .completion-msg .icon { font-size: 64px; margin-bottom: 16px; }
+  .completion-msg h2 { font-size: 28px; font-weight: 300; letter-spacing: 4px; margin-bottom: 8px; }
+  .completion-msg p { opacity: 0.7; font-size: 15px; }
+
+  @keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
+</head>
+<body class="focus-mode">
+
+<div class="container">
+  <h1>专注时刻</h1>
+  <p class="status-label" id="statusLabel">准备开始专注</p>
+
+  <div class="mode-tabs">
+    <button class="mode-tab active" onclick="setMode('focus')">专注 25分钟</button>
+    <button class="mode-tab" onclick="setMode('short')">短休 5分钟</button>
+    <button class="mode-tab" onclick="setMode('long')">长休 15分钟</button>
+  </div>
+
+  <div class="timer-ring">
+    <svg viewBox="0 0 280 280">
+      <circle class="bg-ring" cx="140" cy="140" r="124"/>
+      <circle class="progress-ring" id="progressRing" cx="140" cy="140" r="124"
+              stroke-dasharray="779.2" stroke-dashoffset="0"/>
+    </svg>
+    <div class="timer-display">
+      <div class="time-text" id="timeDisplay">25:00</div>
+      <div class="session-count" id="sessionCount">第 1 个番茄</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-secondary" onclick="resetTimer()">重置</button>
+    <button class="btn btn-primary" id="startBtn" onclick="toggleTimer()">开 始</button>
+    <button class="btn btn-secondary" onclick="skipPhase()">跳过</button>
+  </div>
+
+  <div class="stats">
+    <span><strong id="todayCount">0</strong>今日专注</span>
+    <span><strong id="totalMin">0</strong>分钟</span>
+  </div>
+</div>
+
+<div class="completion-overlay" id="completionOverlay" onclick="dismissCompletion()">
+  <div class="completion-msg">
+    <div class="icon" id="completionIcon">🎉</div>
+    <h2 id="completionTitle">专注完成！</h2>
+    <p id="completionText">太棒了，休息一下吧</p>
+  </div>
+</div>
+
+<script>
+  const CIRCUMFERENCE = 2 * Math.PI * 124;
+  const MODES = { focus: 25 * 60, short: 5 * 60, long: 15 * 60 };
+
+  let currentMode = 'focus';
+  let totalSeconds = MODES.focus;
+  let remaining = totalSeconds;
+  let running = false;
+  let interval = null;
+  let sessions = 0;
+  let totalFocusMin = 0;
+
+  const ring = document.getElementById('progressRing');
+  const timeEl = document.getElementById('timeDisplay');
+  const startBtn = document.getElementById('startBtn');
+  const statusLabel = document.getElementById('statusLabel');
+  const sessionCount = document.getElementById('sessionCount');
+  const todayCount = document.getElementById('todayCount');
+  const totalMinEl = document.getElementById('totalMin');
+
+  ring.style.strokeDasharray = CIRCUMFERENCE;
+
+  function formatTime(s) {
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+  }
+
+  function updateDisplay() {
+    timeEl.textContent = formatTime(remaining);
+    const progress = 1 - remaining / totalSeconds;
+    ring.style.strokeDashoffset = CIRCUMFERENCE * (1 - progress);
+  }
+
+  function setMode(mode) {
+    currentMode = mode;
+    totalSeconds = MODES[mode];
+    remaining = totalSeconds;
+    running = false;
+    clearInterval(interval);
+    startBtn.textContent = '开 始';
+
+    document.querySelectorAll('.mode-tab').forEach((tab, i) => {
+      const modes = ['focus', 'short', 'long'];
+      tab.classList.toggle('active', modes[i] === mode);
+    });
+
+    document.body.className = mode === 'focus' ? 'focus-mode' : 'break-mode';
+    ring.classList.remove('pulse');
+
+    if (mode === 'focus') {
+      statusLabel.textContent = '准备开始专注';
+      sessionCount.textContent = `第 ${sessions + 1} 个番茄`;
+    } else if (mode === 'short') {
+      statusLabel.textContent = '短暂休息一下';
+      sessionCount.textContent = '休息中';
+    } else {
+      statusLabel.textContent = '来一次长休息';
+      sessionCount.textContent = '休息中';
+    }
+
+    updateDisplay();
+  }
+
+  function toggleTimer() {
+    if (running) {
+      running = false;
+      clearInterval(interval);
+      startBtn.textContent = '继 续';
+      ring.classList.remove('pulse');
+      statusLabel.textContent = currentMode === 'focus' ? '已暂停' : '休息暂停';
+    } else {
+      running = true;
+      startBtn.textContent = '暂 停';
+      if (currentMode === 'focus') {
+        ring.classList.add('pulse');
+        statusLabel.textContent = '专注中...';
+      } else {
+        statusLabel.textContent = '休息中...';
+      }
+      interval = setInterval(() => {
+        remaining--;
+        updateDisplay();
+        if (remaining <= 0) {
+          clearInterval(interval);
+          running = false;
+          onComplete();
+        }
+      }, 1000);
+    }
+  }
+
+  function resetTimer() {
+    running = false;
+    clearInterval(interval);
+    remaining = totalSeconds;
+    startBtn.textContent = '开 始';
+    ring.classList.remove('pulse');
+    statusLabel.textContent = currentMode === 'focus' ? '准备开始专注' : '准备休息';
+    updateDisplay();
+  }
+
+  function skipPhase() {
+    clearInterval(interval);
+    running = false;
+    remaining = 0;
+    onComplete();
+  }
+
+  function onComplete() {
+    const overlay = document.getElementById('completionOverlay');
+    const icon = document.getElementById('completionIcon');
+    const title = document.getElementById('completionTitle');
+    const text = document.getElementById('completionText');
+
+    if (currentMode === 'focus') {
+      sessions++;
+      totalFocusMin += MODES.focus / 60;
+      todayCount.textContent = sessions;
+      totalMinEl.textContent = totalFocusMin;
+      icon.textContent = '🎉';
+      title.textContent = '专注完成！';
+      text.textContent = `第 ${sessions} 个番茄，太棒了！休息一下吧`;
+    } else {
+      icon.textContent = '💪';
+      title.textContent = '休息结束';
+      text.textContent = '状态拉满，继续专注吧';
+    }
+
+    overlay.classList.add('show');
+    startBtn.textContent = '开 始';
+    ring.classList.remove('pulse');
+
+    setTimeout(() => {
+      if (currentMode === 'focus') {
+        setMode(sessions % 4 === 0 ? 'long' : 'short');
+      } else {
+        setMode('focus');
+      }
+    }, 100);
+  }
+
+  function dismissCompletion() {
+    document.getElementById('completionOverlay').classList.remove('show');
+  }
+
+  updateDisplay();
+</script>
+</body>
+</html>

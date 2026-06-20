@@ -1,0 +1,36 @@
+# macOS
+.DS_Store
+*.DS_Store
+._*
+
+# Editor
+.vscode/
+.cursor/
+.idea/
+
+# 媒体文件
+*.PNG
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.mov
+
+# Temp
+*.tmp
+*.swp
+*~
+
+# 大文件
+*.pdf
+*.xlsx
+
+# 独立 Git 项目，不嵌套
+工具项目/viral-video-analyzer/
+
+# Skills 安装器自动生成的镜像目录
+.claude/settings.local.json
+.claude/skills/
+.qoder/
+/skills/
+/skills-lock.json
