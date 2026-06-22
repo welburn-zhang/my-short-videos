@@ -2,9 +2,9 @@
 name: dbs-xhs-title
 description: |
   小红书标题公式工具。从 75 个验证过的爆款公式中，帮你挑对的、用对的、理解为什么用这个。
-  触发方式：/dbs-xhs-title、/小红书标题、「帮我起个小红书标题」「小红书标题公式」
+  触发方式：$dbs-xhs-title、/小红书标题、「帮我起个小红书标题」「小红书标题公式」
   Xiaohongshu title formula tool. Pick the right formula from 75 proven templates.
-  Trigger: /dbs-xhs-title, "xiaohongshu title", "RED title formula"
+  Trigger: $dbs-xhs-title, "xiaohongshu title", "RED title formula"
 ---
 
 # dbs-xhs-title：小红书标题公式工具
@@ -45,7 +45,7 @@ description: |
 - 这个内容真正想表达什么，哪些表达不能为了点击率被扭曲
 - 这个内容适合哪种心理触发器（认知冲突 / 好奇缺口 / 身份代入 / 数字锚定 / 结果承诺等）
 - 哪些公式不适合这个选题，尤其是会放大焦虑、审核风险、账号心智偏移，或把内容拧成用户不想讲的表达
-- 如果内容本身还没讲清楚，先退回 `/dbs-content`，不要硬套标题公式
+- 如果内容本身还没讲清楚，先退回 `$dbs-content`，不要硬套标题公式
 
 输出标题前，必须先给一句「dbs 标题判断」。用户要完整脚本时，必须等用户确认该判断后再进入脚本输出。
 
@@ -203,8 +203,8 @@ description: |
 
 | 触发条件 | 推荐 |
 |---|---|
-| 标题选好，想优化开头 | 「标题定了，接下来优化开头。用 `/dbs-hook`。」 |
-| 标题选好，想做完整内容诊断 | 「想看内容整体有没有问题？用 `/dbs-content`。」 |
+| 标题选好，想优化开头 | 「标题定了，接下来优化开头。用 `$dbs-hook`。」 |
+| 标题选好，想做完整内容诊断 | 「想看内容整体有没有问题？用 `$dbs-content`。」 |
 | 用户对标题没感觉，可能是选题问题 | 「标题怎么写都不够吸引人，可能是选题本身的问题。」 |
 
 ---

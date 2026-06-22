@@ -1,0 +1,4 @@
+interface:
+  display_name: "张半蛋工作助手"
+  short_description: "处理运营数据、项目复盘、周报与工作型笔记整理任务"
+  default_prompt: "使用 $zbd-work-assistant 完成这项数据分析、复盘或笔记任务。"

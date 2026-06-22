@@ -44,7 +44,7 @@
 
 | 类别           | 位置                | 说明                                         |
 | ------------ | ----------------- | ------------------------------------------ |
-| 诊断工具箱（dbs-*） | `.agents/dbs/`    | 开头优化、标题生成、内容诊断等，详见 `.agents/dbs/README.md` |
-| 去 AI 味工具     | `.agents/去AI味工具/` | 每次输出脚本前必须调用                                |
-
+| 诊断工具箱（dbs-*） | `.agents/dbs/`    | 源码目录；通过本目录中的 `dbs*` 软链接供 Codex 发现 |
+| 去 AI 味工具     | `.agents/去AI味工具/` | 源码目录；通过 `humanizer-zh` 软链接供 Codex 发现 |
+| 项目工作流（zbd-*） | `.agents/skills/` | 从 Cursor rules 转换而来的 Codex 原生 Skills |
 

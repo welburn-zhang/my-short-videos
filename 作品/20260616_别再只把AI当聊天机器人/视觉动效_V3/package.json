@@ -1,0 +1,11 @@
+{
+  "name": "zbd-ai-task-v3-motion",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.6.119 preview",
+    "lint": "npx --yes hyperframes@0.6.119 lint",
+    "validate": "npx --yes hyperframes@0.6.119 validate",
+    "inspect": "npx --yes hyperframes@0.6.119 inspect"
+  }
+}

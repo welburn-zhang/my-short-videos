@@ -2,9 +2,9 @@
 name: dbs-deconstruct
 description: |
   dontbesilent 概念拆解。用维特根斯坦 + 奥派经济学的方法，把模糊的商业概念拆到原子级别。
-  触发方式：/dbs-deconstruct、/拆概念、「帮我拆解这个概念」「这个词到底什么意思」
+  触发方式：$dbs-deconstruct、/拆概念、「帮我拆解这个概念」「这个词到底什么意思」
   Concept deconstruction using Wittgenstein + Austrian economics framework.
-  Trigger: /dbs-deconstruct, "deconstruct this concept", "what does this really mean"
+  Trigger: $dbs-deconstruct, "deconstruct this concept", "what does this really mean"
 ---
 
 # dbs-deconstruct：概念拆解
@@ -174,7 +174,7 @@ description: |
 
 | 触发条件 | 推荐话术 |
 |---|---|
-| 拆解过程中发现商业模式层面的问题 | 「这个概念背后的问题可能更大，建议 `/dbs-diagnosis` 看看商业模式。」 |
+| 拆解过程中发现商业模式层面的问题 | 「这个概念背后的问题可能更大，建议 `$dbs-diagnosis` 看看商业模式。」 |
 
 ---
 
@@ -218,7 +218,7 @@ description: |
 | 触发条件 | 推荐话术 |
 |---|---|
 | 拆解的概念是经济学核心概念（如价格、利润、企业家、市场、交换） | 「这个概念在奥派经济学里有更深的讨论。想听哈耶克和米塞斯的观点？用 `/奥派`。」 |
-| 拆解后发现是商业模式问题 | 「概念拆清楚了。想诊断你的具体商业模式？用 `/dbs-diagnosis`。」 |
+| 拆解后发现是商业模式问题 | 「概念拆清楚了。想诊断你的具体商业模式？用 `$dbs-diagnosis`。」 |
 
 ---
 

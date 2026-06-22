@@ -2,9 +2,9 @@
 name: dbs-hook
 description: |
   dontbesilent 短视频开头优化。诊断开头问题 + 生成优化方案。
-  触发方式：/dbs-hook、/hook、「帮我优化开头」「开头怎么写」
+  触发方式：$dbs-hook、/hook、「帮我优化开头」「开头怎么写」
   Short video opening optimization with diagnosis and solutions.
-  Trigger: /dbs-hook, "optimize my opening", "how to write opening"
+  Trigger: $dbs-hook, "optimize my opening", "how to write opening"
 ---
 
 # dbs-hook：短视频开头优化
@@ -259,7 +259,7 @@ description: |
 
 | 触发条件 | 推荐话术 |
 |---|---|
-| 开头优化完，用户想看整体 | 「开头优化完了。想看整体内容有没有问题？用 `/dbs-content` 诊断。」 |
+| 开头优化完，用户想看整体 | 「开头优化完了。想看整体内容有没有问题？用 `$dbs-content` 诊断。」 |
 | 发现选题问题 | 「开头优化不了，是因为选题有问题。建议重新评估选题。」 |
 | 发现素材不足 | 「素材不够，开头冲击力有限。建议补充数据、故事、金句后再优化。」 |
 

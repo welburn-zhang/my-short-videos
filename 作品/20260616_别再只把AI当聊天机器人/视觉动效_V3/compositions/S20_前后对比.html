@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="../assets/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "ZBD Heiti"; src: url("../assets/ZBD-Heiti-Light.ttc"); font-weight: 300 600; }
+      @font-face { font-family: "ZBD Heiti"; src: url("../assets/ZBD-Heiti-Medium.ttc"); font-weight: 700 900; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #eef5ff; }
+      body { font-family: "ZBD Heiti", sans-serif; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #eef5ff; color: #182230; }
+      .top { position: absolute; inset: 0 0 auto 0; height: 330px; background: #112a4d; }
+      .ring { position: absolute; right: -170px; top: -220px; width: 540px; height: 540px; border-radius: 50%; border: 80px solid rgba(52,120,246,.24); }
+      .content { position: relative; width: 100%; height: 100%; padding: 104px 74px 100px; display: flex; flex-direction: column; gap: 34px; }
+      .meta { color: #8bb6ff; font-family: "JetBrains Mono", monospace; font-size: 28px; font-weight: 700; letter-spacing: .1em; }
+      h1 { color: #f8fbff; font-size: 80px; line-height: 1.12; letter-spacing: -.045em; font-weight: 900; }
+      .compare { margin-top: 74px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; }
+      .panel { position: relative; border-radius: 38px; padding: 40px 30px; overflow: hidden; display: flex; flex-direction: column; gap: 26px; box-shadow: 0 24px 70px rgba(17,42,77,.12); }
+      .before { background: #fff8ef; border: 3px solid #ffd1a1; }
+      .after { background: #f8fbff; border: 3px solid #8bb6ff; }
+      .badge { align-self: flex-start; border-radius: 99px; padding: 12px 24px; font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 700; }
+      .before .badge { color: #a35308; background: #ffe1c0; }
+      .after .badge { color: #174d9e; background: #dce9ff; }
+      .prompt { min-height: 180px; padding: 28px; border-radius: 26px; font-size: 34px; line-height: 1.35; font-weight: 700; }
+      .before .prompt { color: #6f411c; background: rgba(255,255,255,.72); }
+      .after .prompt { color: #173b70; background: #eef5ff; }
+      .rows { display: flex; flex-direction: column; gap: 18px; }
+      .row { min-height: 102px; border-radius: 22px; padding: 20px 20px; display: flex; align-items: center; gap: 12px; font-size: 28px; line-height: 1.25; font-weight: 650; }
+      .before .row { background: rgba(255,255,255,.64); color: #8a6a4d; }
+      .after .row { background: #eaf2ff; color: #24496f; }
+      .status { margin-top: auto; font-size: 42px; font-weight: 900; }
+      .before .status { color: #d86f16; }
+      .after .status { color: #3478f6; }
+      .arrow { position: absolute; left: 50%; top: 890px; z-index: 3; width: 104px; height: 104px; margin-left: -52px; display: grid; place-items: center; border-radius: 50%; background: #112a4d; color: #f8fbff; font-size: 54px; box-shadow: 0 12px 34px rgba(17,42,77,.28); }
+      .summary { min-height: 146px; border-radius: 30px; padding: 30px 34px; background: #112a4d; color: #f8fbff; display: flex; align-items: center; justify-content: space-between; gap: 24px; font-size: 34px; font-weight: 700; }
+      .summary strong { color: #75a8ff; font-size: 45px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="s20-compare" data-start="0" data-duration="6" data-width="1080" data-height="1920">
+      <div class="top"></div><div class="ring"></div>
+      <div class="content">
+        <div class="meta">BEFORE / AFTER · SAME MEETING NOTES</div>
+        <h1>同一份记录，<br />结果差在哪里？</h1>
+        <div class="compare">
+          <section class="panel before">
+            <span class="badge">BEFORE</span>
+            <div class="prompt">“帮我做一份项目复盘”</div>
+            <div class="rows">
+              <div class="row">目标达成情况</div>
+              <div class="row">问题与经验</div>
+              <div class="row">未来规划</div>
+            </div>
+            <div class="status">看着完整<br />不能执行</div>
+          </section>
+          <section class="panel after">
+            <span class="badge">AFTER</span>
+            <div class="prompt">给资料、说结果、设限制</div>
+            <div class="rows">
+              <div class="row">✓ 已完成事项</div>
+              <div class="row">✓ 当前卡点</div>
+              <div class="row">✓ 责任人和动作</div>
+            </div>
+            <div class="status">信息清楚<br />可以开会</div>
+          </section>
+        </div>
+        <div class="summary"><span>不是换一个“高级词”</span><strong>是把任务说清楚</strong></div>
+      </div>
+      <div class="arrow">→</div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.from(".meta", { opacity: 0, x: -50, duration: .42, ease: "expo.out" }, .18);
+      tl.from("h1", { opacity: 0, y: 54, duration: .6, ease: "power3.out" }, .35);
+      tl.from(".before", { opacity: 0, x: -110, rotation: -1.5, duration: .66, ease: "power4.out" }, .72);
+      tl.from(".after", { opacity: 0, x: 110, rotation: 1.5, duration: .66, ease: "back.out(1.18)" }, .9);
+      tl.from(".before .row", { opacity: 0, y: 26, duration: .3, stagger: .14, ease: "power2.out" }, 1.28);
+      tl.from(".after .row", { opacity: 0, scale: .9, duration: .32, stagger: .14, ease: "back.out(1.35)" }, 1.55);
+      tl.from(".arrow", { opacity: 0, scale: .4, rotation: -35, duration: .45, ease: "back.out(1.7)" }, 1.92);
+      tl.from(".status", { opacity: 0, y: 30, duration: .42, stagger: .18, ease: "sine.out" }, 2.18);
+      tl.from(".summary", { opacity: 0, y: 54, duration: .55, ease: "power3.out" }, 2.62);
+      tl.from(".summary strong", { opacity: 0, x: 36, duration: .4, ease: "expo.out" }, 2.95);
+      tl.to(".ring", { rotation: 16, scale: 1.06, duration: 5.3, ease: "sine.inOut" }, .2);
+      window.__timelines["s20-compare"] = tl;
+    </script>
+  </body>
+</html>

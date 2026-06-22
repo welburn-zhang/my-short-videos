@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="../assets/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "ZBD Heiti"; src: url("../assets/ZBD-Heiti-Light.ttc"); font-weight: 300 600; }
+      @font-face { font-family: "ZBD Heiti"; src: url("../assets/ZBD-Heiti-Medium.ttc"); font-weight: 700 900; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #eef5ff; }
+      body { font-family: "ZBD Heiti", sans-serif; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #eef5ff; color: #182230; }
+      .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(52,120,246,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(52,120,246,.06) 1px, transparent 1px); background-size: 80px 80px; }
+      .glow { position: absolute; width: 660px; height: 660px; left: -300px; bottom: -120px; border-radius: 50%; background: radial-gradient(circle, rgba(52,120,246,.18), rgba(52,120,246,0) 68%); }
+      .content { position: relative; width: 100%; height: 100%; padding: 142px 86px 124px; display: flex; flex-direction: column; gap: 34px; }
+      .meta { color: #3478f6; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 28px; letter-spacing: .1em; }
+      h1 { margin: 70px 0 30px; font-size: 88px; line-height: 1.15; letter-spacing: -.045em; font-weight: 900; max-width: 880px; }
+      h1 em { color: #ff9d42; font-style: normal; position: relative; }
+      h1 em::after { content: ""; position: absolute; left: -8px; right: -8px; bottom: -8px; height: 18px; border-radius: 99px; background: rgba(255,157,66,.28); }
+      .card { position: relative; min-height: 210px; padding: 42px 46px 40px 150px; border-radius: 34px; background: rgba(248,251,255,.94); border: 2px solid rgba(52,120,246,.16); box-shadow: 0 22px 70px rgba(17,42,77,.1); display: flex; align-items: center; }
+      .number { position: absolute; left: 40px; display: grid; place-items: center; width: 78px; height: 78px; border-radius: 24px; background: #112a4d; color: #f8fbff; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 30px; }
+      .question { font-size: 54px; line-height: 1.22; font-weight: 800; }
+      .mark { position: absolute; right: 36px; top: 26px; color: #ff9d42; font-family: Georgia, serif; font-size: 72px; font-weight: 700; transform: rotate(7deg); }
+      .foot { margin-top: auto; padding-top: 36px; border-top: 3px solid #cfe0ff; display: flex; justify-content: space-between; align-items: center; color: #46617f; font-size: 30px; font-weight: 600; }
+      .tag { color: #3478f6; font-family: "JetBrains Mono", monospace; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="s04-questions" data-start="0" data-duration="5" data-width="1080" data-height="1920">
+      <div class="grid"></div><div class="glow"></div>
+      <div class="content">
+        <div class="meta">BAD OUTPUT · CHECK THE RESULT</div>
+        <h1>看起来完整，<br />为什么还是<em>不能用</em>？</h1>
+        <div class="card"><span class="number">01</span><span class="question">项目做到了哪一步？</span><span class="mark">?</span></div>
+        <div class="card"><span class="number">02</span><span class="question">接下来谁来负责？</span><span class="mark">?</span></div>
+        <div class="card"><span class="number">03</span><span class="question">下周到底要做什么？</span><span class="mark">?</span></div>
+        <div class="foot"><span>信息缺失，复盘就落不了地</span><span class="tag">#先检查结果</span></div>
+      </div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.from(".meta", { opacity: 0, x: -48, duration: .4, ease: "expo.out" }, .18);
+      tl.from("h1", { opacity: 0, y: 55, duration: .62, ease: "power3.out" }, .34);
+      tl.from(".card", { opacity: 0, x: 90, rotation: 1.2, duration: .48, stagger: .42, ease: "back.out(1.18)" }, .82);
+      tl.from(".number", { scale: .6, rotation: -12, duration: .34, stagger: .42, ease: "back.out(1.6)" }, .96);
+      tl.from(".mark", { opacity: 0, scale: 1.8, duration: .22, stagger: .42, ease: "power4.out" }, 1.15);
+      tl.from(".foot", { opacity: 0, scaleX: .8, transformOrigin: "left", duration: .5, ease: "sine.out" }, 2.35);
+      tl.to(".glow", { x: 65, scale: 1.08, duration: 4.3, ease: "sine.inOut" }, .25);
+      window.__timelines["s04-questions"] = tl;
+    </script>
+  </body>
+</html>

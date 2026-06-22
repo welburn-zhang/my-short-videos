@@ -1,0 +1,4 @@
+interface:
+  display_name: "张半蛋学习测验"
+  short_description: "控制知识讲解、学后测验、学习笔记与进度更新流程"
+  default_prompt: "使用 $zbd-learning-quiz 按学习流程讲解或测验这个知识点。"

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="./assets/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "ZBD Heiti"; src: url("./assets/ZBD-Heiti-Light.ttc"); font-weight: 300 600; }
+      @font-face { font-family: "ZBD Heiti"; src: url("./assets/ZBD-Heiti-Medium.ttc"); font-weight: 700 900; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #eef5ff; }
+      body { font-family: "ZBD Heiti", sans-serif; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #eef5ff; }
+      .grid {
+        position: absolute; inset: 0;
+        background-image: linear-gradient(rgba(52,120,246,.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(52,120,246,.07) 1px, transparent 1px);
+        background-size: 72px 72px;
+      }
+      .content { position: relative; width: 100%; height: 100%; padding: 190px 100px; display: flex; flex-direction: column; justify-content: center; gap: 54px; }
+      .eyebrow { color: #3478f6; font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 700; letter-spacing: .08em; }
+      h1 { color: #182230; font-size: 104px; line-height: 1.12; letter-spacing: -.04em; font-weight: 900; max-width: 850px; }
+      .sample { display: flex; align-items: center; gap: 26px; color: #112a4d; font-size: 42px; font-weight: 600; }
+      .num { display: grid; place-items: center; width: 78px; height: 78px; border-radius: 22px; color: #f8fbff; background: #3478f6; font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 700; }
+      .line { width: 100%; height: 8px; border-radius: 99px; background: #d6e5ff; overflow: hidden; }
+      .line::after { content: ""; display: block; width: 64%; height: 100%; background: #3478f6; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="1080" data-height="1920">
+      <div class="grid"></div>
+      <div class="content">
+        <div class="eyebrow">ZHANG BANDAN · MOTION SYSTEM 01</div>
+        <h1>蓝色轻科技<br />动效样片</h1>
+        <div class="line"></div>
+        <div class="sample"><span class="num">01</span><span>章节大字报</span></div>
+        <div class="sample"><span class="num">02</span><span>三个问题提示</span></div>
+        <div class="sample"><span class="num">03</span><span>修改前后对比</span></div>
+      </div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.from(".eyebrow", { opacity: 0, x: -60, duration: .45, ease: "expo.out" }, .2);
+      tl.from("h1", { opacity: 0, y: 70, scale: .97, duration: .65, ease: "power3.out" }, .35);
+      tl.from(".line", { opacity: 0, scaleX: 0, transformOrigin: "left", duration: .5, ease: "power2.out" }, .72);
+      tl.from(".sample", { opacity: 0, x: 70, duration: .45, stagger: .14, ease: "back.out(1.25)" }, .9);
+      window.__timelines.main = tl;
+    </script>
+  </body>
+</html>

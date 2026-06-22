@@ -2,9 +2,9 @@
 name: dbs-benchmark
 description: |
   dontbesilent 对标分析。用五重过滤法帮你找到值得参考的对标，提炼可学习的表达结构和业务动作。
-  触发方式：/dbs-benchmark、/对标、「帮我找对标」「我该模仿谁」
+  触发方式：$dbs-benchmark、/对标、「帮我找对标」「我该模仿谁」
   Benchmark analysis using dontbesilent's five-filter method.
-  Trigger: /dbs-benchmark, "find me a benchmark", "who should I copy"
+  Trigger: $dbs-benchmark, "find me a benchmark", "who should I copy"
 ---
 
 # dbs-benchmark：对标分析
@@ -174,7 +174,7 @@ description: |
 
 | 触发条件 | 推荐话术 |
 |---|---|
-| 用户反复说"不适合我"，疑似心理卡点 | 「你可能不是在选对标，是在逃避执行。试试 `/dbs-action`。」 |
+| 用户反复说"不适合我"，疑似心理卡点 | 「你可能不是在选对标，是在逃避执行。试试 `$dbs-action`。」 |
 
 ---
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "张半蛋项目记忆"
+  short_description: "管理项目讨论、策略决策与跨对话关键结论沉淀流程"
+  default_prompt: "使用 $zbd-session-memory 处理这次项目讨论及需要沉淀的结论。"

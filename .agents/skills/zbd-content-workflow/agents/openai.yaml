@@ -1,0 +1,4 @@
+interface:
+  display_name: "张半蛋内容工作流"
+  short_description: "处理短视频选题、脚本、标题、发布复盘与双平台适配规则"
+  default_prompt: "使用 $zbd-content-workflow 按张半蛋项目规范处理这项内容任务。"

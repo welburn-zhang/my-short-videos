@@ -2,9 +2,9 @@
 name: dbs-content
 description: |
   dontbesilent 内容创作诊断。选题通过后，诊断怎么把这个选题做成好内容。
-  触发方式：/dbs-content、/内容诊断、「这个内容怎么做」「帮我看看这个文案」
+  触发方式：$dbs-content、/内容诊断、「这个内容怎么做」「帮我看看这个文案」
   Content creation diagnosis. After topic passes, diagnose how to turn it into good content.
-  Trigger: /dbs-content, "how should I create this content", "review my copy"
+  Trigger: $dbs-content, "how should I create this content", "review my copy"
 ---
 
 # dbs-content：内容创作诊断
@@ -181,10 +181,10 @@ AI 写的内容被限流不是 AI 的问题，是用 AI 的人对文字没有洁
 
 | 触发条件 | 推荐话术 |
 |---|---|
-| 诊断出开头问题 | 「开头有问题。用 `/dbs-hook` 优化，生成 10 个方案。」 |
-| 内容涉及平台选择和运营细节 | 「平台怎么做，去 `/dbs-benchmark` 找个对标先模仿。」 |
-| 内容中使用了模糊概念 | 「这个概念需要先拆清楚，试试 `/dbs-deconstruct`。」 |
-| 用户做不动、一直在准备 | 「你可能不是内容问题，是执行力问题。试试 `/dbs-action`。」 |
+| 诊断出开头问题 | 「开头有问题。用 `$dbs-hook` 优化，生成 10 个方案。」 |
+| 内容涉及平台选择和运营细节 | 「平台怎么做，去 `$dbs-benchmark` 找个对标先模仿。」 |
+| 内容中使用了模糊概念 | 「这个概念需要先拆清楚，试试 `$dbs-deconstruct`。」 |
+| 用户做不动、一直在准备 | 「你可能不是内容问题，是执行力问题。试试 `$dbs-action`。」 |
 
 ---
 

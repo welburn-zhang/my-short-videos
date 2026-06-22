@@ -1,0 +1,4 @@
+interface:
+  display_name: "张半蛋深度阅读"
+  short_description: "扫描并深读书籍、文章、行业报告、PDF 和其他长材料"
+  default_prompt: "使用 $zbd-deep-reading 帮我阅读并讨论这份材料。"
