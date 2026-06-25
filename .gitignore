@@ -24,6 +24,19 @@
 # 大文件
 *.pdf
 *.xlsx
+*.ttc
+*.ttf
+*.otf
+*.woff
+*.woff2
+*.zip
+*.dmg
+
+# 依赖与构建产物
+node_modules/
+.vite/
+dist/
+build/
 
 # 独立 Git 项目，不嵌套
 工具项目/viral-video-analyzer/
