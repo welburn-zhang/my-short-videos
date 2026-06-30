@@ -16,7 +16,8 @@
 ├── cp-script-draft/     # 脚本初稿生成器
 ├── cp-topic-eval/       # 选题评估器
 ├── cp-material-extract/ # 素材提取器
-└── data-weekly/         # 每周数据复盘器
+├── data-weekly/         # 每周数据复盘器
+└── short-video-illustration-storyboard/ # 短视频插画分镜
 ```
 
 ## 内容生产工具（cp-*）
@@ -39,6 +40,13 @@
 
 **使用前提**：每周日晚上，先在两个后台各导出一次新 xlsx，按命名规范放入对应目录（保留历史版本，不要覆盖），再触发 skill。
 
+## 视觉分镜工具
+
+
+| Skill                                | 触发词        | 功能                              |
+| ------------------------------------ | ---------- | ------------------------------- |
+| `short-video-illustration-storyboard` | 短视频插画分镜   | 根据脚本规划插画画面、插入时机、分镜图和生图/视频提示词 |
+
 ## 其他 Skills
 
 
@@ -47,4 +55,3 @@
 | 诊断工具箱（dbs-*） | `.agents/dbs/`    | 源码目录；通过本目录中的 `dbs*` 软链接供 Codex 发现 |
 | 去 AI 味工具     | `.agents/去AI味工具/` | 源码目录；通过 `humanizer-zh` 软链接供 Codex 发现 |
 | 项目工作流（zbd-*） | `.agents/skills/` | 从 Cursor rules 转换而来的 Codex 原生 Skills |
-
