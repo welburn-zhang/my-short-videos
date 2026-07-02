@@ -153,6 +153,24 @@
 5. 不确定选哪个 → 优先选表达欲更强、真实案例更足、长期更想沉淀的内容；数据表现只作为辅助参考
 ```
 
+### 每日 AI 博主观察雷达
+
+```
+1. 先读 对话备忘录.md、知识库/选题池.md、知识库/账号定位与方向规划.md。
+2. 先跑 opencli doctor，确认 Browser Bridge connected。
+3. 如果出现多个 Browser Bridge profile，默认使用 office：
+   opencli profile use office
+4. 抖音/小红书原始抓取可用时，必须优先用真实平台结果，不再默认写趋势版。
+5. 小红书 search 提示登录墙时，先在 office Chrome 扫码登录小红书，再重试；不要把登录墙误判成断网。
+6. 如果 Browser Bridge 断开：
+   - 先确认 opencli 版本和 daemon 状态；
+   - 不要再依赖 Chrome 命令行 --load-extension，当前 Google Chrome 149 会忽略临时加载扩展参数；
+   - 需要在 Chrome 扩展页正式加载/启用 OpenCLI Browser Bridge 扩展；
+   - 恢复后用 opencli doctor、opencli xiaohongshu search、opencli douyin search 验证。
+7. 自动化默认发个人通知通道 send_alert；只有用户明确说“发到群里/群里重发”时，才使用业务群 send_text。
+8. 发送企微前清理 HTTPS_PROXY、HTTP_PROXY、ALL_PROXY 及小写同名变量，并设置 NO_PROXY=qyapi.weixin.qq.com；严禁输出 webhook、token、cookie。
+```
+
 ### 旧内容翻新
 
 ```
