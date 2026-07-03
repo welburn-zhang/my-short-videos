@@ -167,7 +167,7 @@
    - 不要再依赖 Chrome 命令行 --load-extension，当前 Google Chrome 149 会忽略临时加载扩展参数；
    - 需要在 Chrome 扩展页正式加载/启用 OpenCLI Browser Bridge 扩展；
    - 恢复后用 opencli doctor、opencli xiaohongshu search、opencli douyin search 验证。
-7. 自动化默认发个人通知通道 send_alert；只有用户明确说“发到群里/群里重发”时，才使用业务群 send_text。
+7. 每日雷达的指定群名是「每日短视频热点选题雷达」；用户说“发到群里/群里重发”且上下文是每日雷达时，可直接发到这个群，不需要再次确认。若要发到任何其他群，必须先复述具体群名并得到确认，不能直接发到「编程-海豚在读用户双方沟通群」。
 8. 发送企微前清理 HTTPS_PROXY、HTTP_PROXY、ALL_PROXY 及小写同名变量，并设置 NO_PROXY=qyapi.weixin.qq.com；严禁输出 webhook、token、cookie。
 ```
 
