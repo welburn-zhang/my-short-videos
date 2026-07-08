@@ -33,12 +33,13 @@ Use these rules unless the user explicitly asks for a storyboard grid:
 - Cut to a new image only when the semantic relationship changes, such as from kitchen metaphor to project-folder maze.
 - For a normal 3-5 minute口播 video, prefer a small set of high-value insert frames, usually 4-8 images, unless the script clearly needs more.
 - Each insert frame should include an insertion suggestion: approximate timecode, spoken sentence or paragraph it supports, and recommended on-screen duration.
-- The main content should fill the full frame comfortably.
-- Do not reserve a tall rectangular presenter area on the left.
-- If presenter presence is needed, use only a circular avatar window in the bottom-left corner, about 12-15% of the image width.
-- The area above the circular avatar can remain empty or contain background/visual content, but it should not become a vertical presenter frame.
+- The main content should fill the available non-presenter area comfortably.
+- Before generating each image, explicitly choose and record one presenter layout mode:
+  - `left-portrait-slot`: use this when the scene is "左侧真人口播 + 右侧信息/录屏/卡片". Reserve a tall rectangular half-body presenter video slot on the left, about 30-36% of the image width, with a subtle frame. Keep the slot and all key content above the subtitle safe area. Do not also add a circular avatar.
+  - `bottom-left-avatar-slot`: use this for full-screen concept, transition, diagram, or abstract explanation frames that still need a small creator presence. Reserve a circular avatar window in the lower-left, about 12-15% of the image width. The avatar slot may occupy the far-left edge of the lower safe region, but the central subtitle lane must remain clean and dark. Do not place text, cards, arrows, or main objects under or behind this circle.
+  - `no-presenter`: use this only when the user explicitly says the frame should have no person/avatar.
 - Keep the circle visually integrated with the image, using a soft warm-orange border and subtle shadow when useful.
-- Preserve a bottom subtitle safe area.
+- Preserve a bottom subtitle safe area: keep at least the lower 18-22% of the frame visually quiet, dark, and low-contrast for Jianying/CapCut subtitles. Do not place key text, logos, UI controls, cards, arrows, or main objects in this area. A `bottom-left-avatar-slot` circular placeholder is the only allowed exception, and it must stay on the far-left without blocking the central subtitle lane.
 - For this project, keep the visual system warm and consistent: yellow warm light, cream cards, orange accents, dark gray bold text, clean layout.
 
 For Zhang Bandan identity consistency, when the illustration includes the creator portrait, avatar, or creator-like character, search and use reference images from:
@@ -50,7 +51,7 @@ Also search the current conversation/context and project-local `characters/` and
 Prompt every insert-frame image with constraints like:
 
 ```text
-Create one single horizontal 16:9 illustration for direct insertion into a Chinese short video. Do not make a storyboard grid. Do not make multiple panels. Do not include any tall rectangular presenter area on the left. The main content should comfortably fill the whole frame. If presenter presence is needed, use only a circular avatar window in the bottom-left corner.
+Create one single horizontal 16:9 illustration for direct insertion into a Chinese short video. Do not make a storyboard grid. Do not make multiple panels. Presenter layout mode: [left-portrait-slot / bottom-left-avatar-slot / no-presenter]. If using left-portrait-slot, reserve a tall left rectangular half-body presenter video area and keep right-side content outside it. If using bottom-left-avatar-slot, reserve a circular creator avatar window in the lower-left, keep all content clear of it, and keep the central bottom subtitle lane clean. Keep all important visual content in the upper 78-82% of the frame. Reserve the lower 18-22% as a clean, dark, low-contrast subtitle safe area with no important text, logos, cards, arrows, or UI controls except the far-left circular avatar slot when that mode is selected.
 ```
 
 ## When to Use
@@ -99,6 +100,8 @@ Always use a two-digit scene number:
 Create `storyboard/` if it does not exist.
 
 Do not overwrite existing storyboard files unless the user asked for regeneration or replacement. If a target file exists, either ask before replacing or write a clear revision path such as `scene-01-v2.png` if the user requested alternatives.
+
+For this project, final storyboard images are delivery assets. When the user asks to commit or push after storyboard work, include the generated `storyboard/scene-XX.png` files and matching storyboard notes by default. If image files are ignored by `.gitignore`, use force-add behavior so the final images are not omitted.
 
 ## Optional Mode: Grid Storyboard
 
@@ -294,16 +297,17 @@ Adjust these when the scene's action needs different emphasis.
 1. Read the finished short-video script, shooting draft, or user-provided scene description.
 2. Segment the spoken script by semantic beat, not by seconds. Prefer 4-8 insert frames for a normal 3-5 minute口播 video.
 3. For each insert frame, decide the approximate insertion timecode or paragraph anchor, recommended on-screen duration, visual purpose, and spoken idea it supports.
-4. Search the current conversation/context for existing character images, including images generated earlier in the project or attached by the user.
-5. Search the current project's `素材库/人物形象/张半蛋/` folder when the creator portrait, avatar, or creator-like character appears.
-6. Search the current project's `characters/` and `storyboard/` folders for corresponding character images, especially `.png` character sheets, turnarounds, approved reference images, and matching `.md` specs.
-7. If a relevant character or creator reference image exists, include it as a reference image when generating insert frames. This is required for identity consistency.
-8. Draft one image-generation prompt per insert frame. Each prompt must request one standalone `16:9` horizontal illustration for direct Jianying/CapCut insertion, with no storyboard grid and no multi-panel layout.
-9. Generate each insert-frame image with the image-generation model/tool, using any available character or creator reference image as a visual reference. Do not replace this with SVG, code drawing, canvas, HTML/CSS, or placeholder art.
-10. Save or copy generated images to `storyboard/scene-XX.png`, using two-digit numbering in script order.
-11. Inspect the images if possible. Verify aspect ratio, subtitle safe area, visual consistency, no tall presenter frame, and obvious visual artifacts.
-12. Write `storyboard/insert-frames.md` in the user's language. Include insertion time, recommended duration, corresponding script beat, file path, image prompt, and editing notes for each image.
-13. Final response should include the saved file paths and, when supported, render at least the first image with a Markdown image tag using an absolute path.
+4. For each insert frame, decide the presenter layout mode before prompting: `left-portrait-slot`, `bottom-left-avatar-slot`, or `no-presenter`. Record the chosen mode in `insert-frames.md`.
+5. Search the current conversation/context for existing character images, including images generated earlier in the project or attached by the user.
+6. Search the current project's `素材库/人物形象/张半蛋/` folder when the creator portrait, avatar, or creator-like character appears.
+7. Search the current project's `characters/` and `storyboard/` folders for corresponding character images, especially `.png` character sheets, turnarounds, approved reference images, and matching `.md` specs.
+8. If a relevant character or creator reference image exists, include it as a reference image when generating insert frames. This is required for identity consistency.
+9. Draft one image-generation prompt per insert frame. Each prompt must request one standalone `16:9` horizontal illustration for direct Jianying/CapCut insertion, with no storyboard grid and no multi-panel layout.
+10. Generate each insert-frame image with the image-generation model/tool, using any available character or creator reference image as a visual reference. Do not replace this with SVG, code drawing, canvas, HTML/CSS, or placeholder art.
+11. Save or copy generated images to `storyboard/scene-XX.png`, using two-digit numbering in script order.
+12. Inspect the images if possible. Verify aspect ratio, subtitle safe area, presenter layout mode, visual consistency, and obvious visual artifacts.
+13. Write `storyboard/insert-frames.md` in the user's language. Include insertion time, recommended duration, corresponding script beat, presenter layout mode, file path, image prompt, and editing notes for each image.
+14. Final response should include the saved file paths and, when supported, render at least the first image with a Markdown image tag using an absolute path.
 
 ### Optional Grid Storyboard Workflow
 
@@ -329,8 +333,8 @@ Before finishing, verify:
 - Insert-frame mode: all planned `storyboard/scene-XX.png` files exist.
 - Insert-frame mode: `storyboard/insert-frames.md` exists and lists insertion time, duration, script beat, file path, prompt, and editing note for each image.
 - Insert-frame mode: each generated image is one standalone `16:9` horizontal image, not a storyboard grid or multi-panel sheet.
-- Insert-frame mode: each image preserves bottom subtitle safe area and does not include a tall rectangular presenter area.
-- Insert-frame mode: if presenter presence is needed, only a circular avatar window appears in the bottom-left corner.
+- Insert-frame mode: each image preserves a bottom subtitle safe area of at least 18-22%, with no key text, logos, UI controls, cards, arrows, or main objects in that area. A far-left circular avatar placeholder is allowed only for `bottom-left-avatar-slot`.
+- Insert-frame mode: each image uses the declared presenter layout mode. `left-portrait-slot` images have a clear left rectangular half-body presenter slot and no circular avatar. `bottom-left-avatar-slot` images have a clear lower-left circular avatar window, keep the central subtitle lane clean, and have no left rectangular slot. `no-presenter` images have neither.
 - Grid mode: `storyboard/scene-XX.png` exists.
 - Grid mode: `storyboard/scene-XX.md` exists.
 - Grid mode: the scene number is two digits.
