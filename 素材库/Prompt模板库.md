@@ -71,19 +71,18 @@ JD：[粘贴JD]
 
 ---
 
-## 三、内容创作类（日常用，Skill替代）
+## 三、内容创作类（日常用，Skill 替代）
 
 
-| 任务     | 调用                     |
-| ------ | ---------------------- |
-| 选题评估   | `/cp-topic-eval`       |
-| 脚本初稿   | `/cp-script-draft`     |
-| 素材提取   | `/cp-material-extract` |
-| 去AI味处理 | 调用去AI味工具 Skill         |
-| 小红书标题  | `/dbs-xhs-title`       |
-| 开头优化   | `/dbs-hook`            |
+| 任务 | 调用 |
+| --- | --- |
+| 选题评估 | `/cp-topic-eval` |
+| 完整脚本 | `/cp-script-draft`（内部完成表达学习和去 AI 味） |
+| 素材提取 | `/cp-material-extract` |
+| 小红书标题 | `/dbs-xhs-title` |
+| 开头优化 | `/dbs-hook` |
 
 
 ---
 
-*最后更新：2026-04-15*
+*最后更新：2026-07-20*
