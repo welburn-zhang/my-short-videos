@@ -21,6 +21,8 @@
 *.tmp
 *.swp
 *~
+.codex-tmp/
+storyboard.local-backup-*/
 
 # 大文件
 *.pdf
