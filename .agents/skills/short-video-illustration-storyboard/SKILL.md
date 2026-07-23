@@ -237,6 +237,8 @@ Always use a two-digit scene number:
 - Visual style baseline B -> `storyboard/style-option-b-[style].png`
 - Visual style baseline C -> `storyboard/style-option-c-[style].png`
 
+The `scene-XX` number must exactly match the `编号` in the current script's `分镜与资产清单`. Do not renumber generated images by generation order or by the count of image-only rows. Gaps are required when intervening checklist rows use real-person footage, recordings, screenshots, or existing templates. For example, if only checklist rows `03` and `06` require generated images, save them as `storyboard/scene-03.png` and `storyboard/scene-06.png`.
+
 Create `storyboard/` if it does not exist.
 
 Do not overwrite existing storyboard files unless the user asked for regeneration or replacement. If a target file exists, either ask before replacing or write a clear revision path such as `scene-01-v2.png` if the user requested alternatives.
@@ -448,7 +450,7 @@ Adjust these when the scene's action needs different emphasis.
 12. If a relevant character or creator reference image exists, include it as a reference image when generating insert frames. This is required for identity consistency.
 13. Draft one image-generation prompt per genuinely new visual asset. Each prompt must request one standalone `16:9` horizontal illustration for direct Jianying/CapCut insertion, with no storyboard grid and no multi-panel layout, and must reference the approved style baseline.
 14. Generate each required insert-frame image with the image-generation model/tool. For `bottom-left-avatar-slot`, preserve the immutable master base and place new content only in the allowed content area; do not regenerate the circle.
-15. Save or copy generated images to `storyboard/scene-XX.png`, using two-digit numbering in script order. Save reusable icons as transparent PNG files and create matching black-background previews.
+15. Save or copy generated images to `storyboard/scene-XX.png`, where `XX` is the exact two-digit `编号` from the current `分镜与资产清单`. Preserve numbering gaps for non-generated rows. Save reusable icons as transparent PNG files and create matching black-background previews.
 16. Inspect the images as a set. Verify aspect ratio, subtitle safe area, presenter layout mode, fixed avatar coordinates, consistency with the approved baseline, Chinese labels, icon visibility, and obvious visual artifacts.
 17. Write `storyboard/insert-frames.md` in the user's language. Include the approved style baseline, insertion time, recommended duration, corresponding script beat, asset type, source, presenter layout mode, reuse plan, file path, image prompt, and editing notes for each image.
 18. Final response should include the saved file paths and, when supported, render at least the first image with a Markdown image tag using an absolute path.
@@ -481,6 +483,7 @@ Before finishing, verify:
 - `insert-frames.md` records the active persistent or newly approved style and its real reference path.
 - Every production image uses the approved style baseline as a visual reference.
 - Insert-frame mode: all planned `storyboard/scene-XX.png` files exist.
+- Every `storyboard/scene-XX.png` number exactly matches its source row `编号` in the current `分镜与资产清单`; images were not renumbered by generation order.
 - Insert-frame mode: `storyboard/insert-frames.md` exists and lists insertion time, duration, script beat, file path, prompt, and editing note for each image.
 - Insert-frame mode: each generated image is one standalone `16:9` horizontal image, not a storyboard grid or multi-panel sheet.
 - Insert-frame mode: each image preserves a bottom subtitle safe area of at least 18-22%, with no key text, logos, UI controls, cards, arrows, or main objects in that area. A far-left circular avatar placeholder is allowed only for `bottom-left-avatar-slot`.
